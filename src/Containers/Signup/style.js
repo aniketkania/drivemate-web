@@ -1,6 +1,23 @@
 // styles.js
 
+
+
 export const getCustomStyles = () => `
+
+
+.form-control {
+  position: relative;
+}
+
+.password-toggle {
+  position: absolute;
+  top: 30px;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+
 .bd-placeholder-img {
   font-size: 1.125rem;
   text-anchor: middle;
