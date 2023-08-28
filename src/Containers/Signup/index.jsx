@@ -6,9 +6,11 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import img from "../../assets/british_pm.jpg";
 import validation from "../validation";
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';   
 
+function Signup() {  
 
-function Signup() {
 
     const [state, setState] = useState(
         {
@@ -27,11 +29,17 @@ function Signup() {
             licence: null,
             profilepic: null
         }
-    );
+    )
 
-    const dispatch = useDispatch();
+    const [passwordVisible, setPasswordVisible] = useState(false);
 
-    const [values, setValues] = useState(
+    const togglePasswordVisibility = () => {
+        setPasswordVisible(!passwordVisible);
+    }
+    
+    const dispatch=useDispatch();
+    
+    const [values,setValues]=useState(
         {
             FirstName: "",
             LastName: "",
@@ -165,9 +173,15 @@ function Signup() {
 
                                     <div className="col">
                                         <div className="form-floating m-2">
-                                            <input type="password" name="Password" onChange={handleChange} className="form-control" id="floatingPassword" placeholder="Password" value={values.Password} />
+                                        
+                                            <input type={passwordVisible ? "text" : "password"}  name="Password" onChange={handleChange} className="form-control" id="floatingPassword" placeholder="Password"   value={values.Password}/>
+                                            <span className="password-toggle" onClick={togglePasswordVisibility}>
+                                                {passwordVisible ? <VisibilityOffIcon /> : <VisibilityIcon />}
+                                            </span>
                                             {errors.Password && <p className="error"> {errors.Password}</p>}
+                                            
                                             <label htmlFor="floatingPassword">Password</label>
+                                            
                                         </div>
                                     </div>
 
@@ -256,7 +270,6 @@ function Signup() {
         </>
 
     )
-
 }
 
 export default Signup;
