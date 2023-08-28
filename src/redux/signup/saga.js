@@ -2,19 +2,10 @@ import { takeEvery,put } from "redux-saga/effects";
 import { TEST,SIGNUP_REQUEST, SIGNUP_SUCCESS } from "./types";
 
 function* doSignup(action) {
-    let data = [
-        {
-          id:"1",
-          title:"None",
-          artist:"None"
-        },
-        {
-          id:"1",
-          title:"None",
-          artist:"None"
-        }
-      ];
-    console.warn("Saga");
+  const {data,type} = action;
+    
+    console.warn("Sign up Saga",data);
+    
     yield put({type:SIGNUP_SUCCESS,data})
 }
 

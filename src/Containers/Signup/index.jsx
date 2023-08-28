@@ -13,6 +13,30 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 
 
+<<<<<<< HEAD
+function Signup() {
+
+    const [state, setState] = useState(
+        {
+            FirstName: "",
+            LastName: "",
+            Email: "",
+            PhoneNo: "",
+            Password: "",
+            Status: true,
+            Role: "",
+            AadharNo: "123",
+            LicenceNo: "123",
+            IsEmailConfirmed: false,
+            IsPhoneConfirmed: false,
+            aadhar: null,
+            licence: null,
+            profilepic: null
+        }
+    );
+
+    const dispatch = useDispatch();
+=======
 function Signup() {  
 
     const [passwordVisible, setPasswordVisible] = useState(false);
@@ -39,11 +63,16 @@ function Signup() {
         }
     );
 
+>>>>>>> e384cfa6d29a2229dd3f2f1e7d987787f22f667e
 
-    const handleSubmit=(e)=>
-    {
+    const handleSubmit = (e) => {
+        console.log("Form submitted", state);
         e.preventDefault();
+<<<<<<< HEAD
+        dispatch(signupRequest(state));
+=======
         setErrors(validation(values));
+>>>>>>> e384cfa6d29a2229dd3f2f1e7d987787f22f667e
     }
 
     const customStyles = getCustomStyles();
@@ -54,12 +83,36 @@ function Signup() {
         setValues({ ...values,[e.target.name]: URL.createObjectURL(e.target.files[0]) })
     }
 
+<<<<<<< HEAD
+    const handleChange = (e) => {
+        e.preventDefault();
+        setState({
+            ...state,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    const handleRoleChange = (e) => {
+        setState({
+            ...state,
+            Role: e.target.value
+        })
+    }
+
+    const handleBinaryChange = (e) => {
+        e.preventDefault();
+
+        setState({
+            ...state,
+            [e.target.name]: URL.createObjectURL(e.target.files[0])
+=======
    
 
     const handleChange=(e)=>{
         setValues({
             ...values,
             [e.target.name]:e.target.value
+>>>>>>> e384cfa6d29a2229dd3f2f1e7d987787f22f667e
         })
     }
 
@@ -86,9 +139,9 @@ function Signup() {
                                 <div className="row" style={{ width: "700px" }}>
 
                                     <div>
-                                        
-                                        <img src={img} alt="img" className="profile" />
-                                        <input type="file" id="img" name="profilepic" accept="image/*" className="w-100" onChange={handleChangeImage} />
+
+                                        <img src={state.profilepic} alt="img" className="profile" />
+                                        <input type="file" id="img" onChange={handleBinaryChange} name="profilepic" accept="image/*" className="w-100" />
 
                                     </div>
 
@@ -158,12 +211,19 @@ function Signup() {
                                 <div className="row" style={{ width: "700px" }}>
                                     <div className="col">
                                         <div className="form-floating m-2">
+<<<<<<< HEAD
+                                            <select id="role" name="role" value={state.Role} onChange={handleRoleChange} className="form-control" placeholder="Role">
+                                                <option value="">--Select Role--</option>
+                                                <option value="customer">Customer</option>
+                                                <option value="driver">Driver</option>
+=======
                                             <select id="role" name="role" className="form-control" placeholder="Role" value={values.Role}>
                                             
                                                 <option value="none">--Select Role--</option>
                                                 <option value="volvo">Driver</option>
                                                 <option value="saab">Customer</option>
 
+>>>>>>> e384cfa6d29a2229dd3f2f1e7d987787f22f667e
                                             </select>
                                             {errors.Role && <p className="error"> {errors.Role}</p>}
                                             <label htmlFor="role">Role</label>
@@ -171,6 +231,29 @@ function Signup() {
                                     </div>
                                 </div>
 
+<<<<<<< HEAD
+                                {
+                                    (state.Role === "driver") &&
+                                    <>
+                                        <div className="row" style={{ width: "700px" }}>
+
+                                            <div className="col">
+                                                <div className="form-floating m-2">
+                                                    <input type="text" name="AadharNo" onChange={handleChange} className="form-control" id="adhar" placeholder="Aadhar Number" />
+                                                    <label htmlFor="aadhar">Aadhar Number</label>
+                                                    <input type="file" name="aadhar" onChange={handleBinaryChange} />
+                                                </div>
+
+                                            </div>
+
+                                            <div className="col">
+                                                <div className="form-floating m-2">
+                                                    <input type="text" name="LicenceNo" onChange={handleChange} className="form-control" id="licenese" placeholder="License Number" />
+                                                    <label htmlFor="licenese">Licenese Number</label>
+                                                    <input type="file" name="licence" onChange={handleBinaryChange} />
+                                                </div>
+                                            </div>
+=======
                                 <div className="row" style={{ width: "700px" }}>
 
                                     <div className="col">
@@ -189,15 +272,14 @@ function Signup() {
                                             {errors.LicenceNo && <p className="error"> {errors.LicenceNo}</p>}
                                             <label htmlFor="licenese">Licenese Number</label>
                                             <input type="file" />
+>>>>>>> e384cfa6d29a2229dd3f2f1e7d987787f22f667e
                                         </div>
-                                    </div>
-                                </div>
+                                    </>
+                                }
 
                             </div>
 
                             <button className="btn btn-primary w-100 py-2" type="submit">Sign up</button>
-                            <p className="mt-5 mb-3 text-body-secondary">&copy; 2017–2023</p>
-
 
                         </form>
                     </main>

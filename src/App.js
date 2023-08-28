@@ -22,7 +22,7 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" Component={LoadingPage} />
+          <Route path="/" Component={Login} />
           <Route path="/signup" Component={Signup} />
           
           <Route
